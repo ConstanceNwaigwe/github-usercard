@@ -15,7 +15,7 @@ const results = axios.get("https://api.github.com/users/ConstanceNwaigwe");
 
     Skip to STEP 3.
 */
-
+console.log(results);
 /*
   STEP 4: Pass the data received from Github into your function,
     and append the returned markup to the DOM as a child of .cards
@@ -53,6 +53,56 @@ const followersArray = [];
       </div>
     </div>
 */
+
+function myfunction(singleobj){
+  let card = document.createElement("div");
+  card.classList.add("card");
+
+  let img = document.createElement("img");
+  img.src = singleobj.avatar_url;
+  card.appendChild(img);
+
+  let cardInfo = document.createElement("div");
+  cardInfo.classList.add("card-info");
+  card.appendChild(cardInfo);
+
+  let name1 = document.createElement("h3");
+  name1.classList.add("name");
+  name1.textContent = singleobj.name;
+  cardInfo.appendChild(name1);
+
+  let username1 = document.createElement("p");
+  username1.classList.add("username");
+  username1.textContent = singleobj.login;
+  cardInfo.appendChild(username1);
+
+  let locations = document.createElement("p");
+  locations.textContent = singleobj.location;
+  cardInfo.appendChild(locations);
+
+  let profile = document.createElement("p");
+  let a = document.createElement("a");
+  a.href = singleobj.repos_url;
+  a.textContent = singleobj.repos_url;
+  profile.textContent = "Profile" + a;
+  cardInfo.appendChild(profile);
+
+  let follower = document.createElement("p");
+  follower.textContent = singleobj.followers;
+  cardInfo.appendChild(follower);
+
+  let followings = document.createElement("p");
+  followings.textContent = singleobj.following;
+  cardInfo.appendChild(followings);
+
+  let bios = document.createElement("p");
+  bios.textContent = singleobj.bio;
+  cardInfo.appendChild(bios);
+
+  return card;
+
+}
+
 
 /*
   List of LS Instructors Github username's:
